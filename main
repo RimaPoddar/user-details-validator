@@ -1,0 +1,40 @@
+def validate_name(name):
+    # Check if the name is not empty, contains only alphabets, and does not exceed 15 characters
+    if name and name.isalpha() and len(name) <= 15:
+        return True
+    return False
+
+def validate_phone_no(phone_no):
+    # Check if the phone number is exactly 10 digits, contains only digits, and all digits are not the same
+    if phone_no.isdigit() and len(phone_no) == 10 and len(set(phone_no)) > 1:
+        return True
+    return False
+
+def validate_email_id(email_id):
+    # Check if the email ID contains '@' and ends with '.com', and the domain name is either 'gmail', 'yahoo', or 'hotmail'
+    if '@' in email_id and email_id.endswith('.com'):
+        domain = email_id.split('@')[1].split('.')[0]
+        if domain in ['gmail', 'yahoo', 'hotmail']:
+            return True
+    return False
+
+def validate_all(name, phone_no, email_id):
+    # Validate name, phone number, and email ID using the respective functions
+    if not validate_name(name):
+        print("Invalid name. Name should not be empty, should contain only alphabets, and should not exceed 15 characters.")
+    elif not validate_phone_no(phone_no):
+        print("Invalid phone number. Phone number should be exactly 10 digits, should not contain any characters or special characters, and all digits should not be the same.")
+    elif not validate_email_id(email_id):
+        print("Invalid email ID. Email ID should contain one '@' character, end with '.com', and the domain name should be either 'gmail', 'yahoo', or 'hotmail'.")
+    else:
+        print("All details are valid.")
+        return True
+    
+    return False
+
+# Example usage:
+name = "Alice"
+phone_no = "1234567890"
+email_id = "alice@gmail.com"
+
+validate_all(name, phone_no, email_id)
